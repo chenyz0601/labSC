@@ -31,10 +31,10 @@ end
 
 
 %%% Fill in this function! [WS exercise a)]
-function next = predict1()
+function next = predict1(j, transm) 
 % predict player next move
-
-next = []; % This is a dummy function
+transm
+next = winchoice(hnext); % This is a dummy function
 % HINT: The function should look similar to predict2 and predict3 below
 
 
