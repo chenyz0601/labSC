@@ -39,15 +39,16 @@ function next = predict1(j, transm)
 transm
 global param_a param_b
 r = rand;
-if(r<param_a)
-    hnext = mod(j,3)+1;
-end
-if (r>param_b)
-    hnext = j;
-end
-if(r>param_a && r<param_b)
-    hnext = mod(1+j,3)+1;
-end
+%# Set up point labels and probabilities (input parameters to function)
+selvector = [param_a  param_b-param_a 1-param_b]
+selvalue = [mod(j,3)+1 mod(1+j,3)+1 j]
+
+%# Output result from function
+hnext = selvalue(find(([cumsum(selvector)] >= r)==1,1)); 
+%# the function finds the index of the vector selvector where the cumulative sum 
+%# is equal to or greater than the random no. generated. stores coresponding 
+%#from selvalue
+
 next = winchoice(hnext); % This is a dummy function
 % HINT: The function should look similar to predict2 and predict3 below
 
