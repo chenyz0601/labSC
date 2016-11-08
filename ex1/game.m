@@ -37,9 +37,9 @@ function pushbuttonsave_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % save last transition matrix and anything else you want saved before closing
-global transm results numrounds policy gametype
+global transm results numrounds policy gametype transm2
 filename = strcat('data_',num2str(gametype),'_',num2str(policy),'_',num2str(numrounds));
-save(filename,'transm','results')
+save(filename,'transm','results','transm2')
 
 
 function testChoice(userchoice,handles)

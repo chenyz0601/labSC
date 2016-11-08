@@ -7,14 +7,17 @@
 function next = mchoice(ng, i, j)
 
 % machine next move
-global samplem transm policy
+global samplem transm policy samplem2 transm2 history
 if(ng == 1)
     % initialize matrices
     [samplem,transm] = initmchoice;
+    [samplem2,transm2] = initmchoice;
     next = randi(3);
 else
     samplem = updatesamplem(i,j,samplem);
     transm = updatetransm(samplem);
+    samplem2 = updatesamplem(history(end-1),history(end),samplem2);
+    transm2 = updatetransm(samplem2);
     
     switch policy
         case 1
@@ -34,6 +37,17 @@ end
 function next = predict1(j, transm) 
 % predict player next move
 transm
+global param_a param_b
+r = rand;
+if(r<param_a)
+    hnext = mod(j,3)+1;
+end
+if (r>param_b)
+    hnext = j;
+end
+if(r>param_a && r<param_b)
+    hnext = mod(1+j,3)+1;
+end
 next = winchoice(hnext); % This is a dummy function
 % HINT: The function should look similar to predict2 and predict3 below
 
