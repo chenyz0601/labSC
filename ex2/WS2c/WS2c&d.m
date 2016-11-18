@@ -14,3 +14,8 @@ for(i=1:size(dt,2))
     pk=solver_RK4( y_0, dt(i), t_end );
     E_RK4(i)=sqrt((dt(i)/t_end)*sum((pk-pk_exact).^2));   
 end
+
+
+    err_factor_reduction_euler(2:size(dt,2))=E_euler(2:size(dt,2))./E_euler(1:size(dt,2)-1)
+    err_factor_reduction_heun(2:size(dt,2))=E_heun(2:size(dt,2))./E_heun(1:size(dt,2)-1)
+    err_factor_reduction_RK4(2:size(dt,2))=E_RK4(2:size(dt,2))./E_RK4(1:size(dt,2)-1)
