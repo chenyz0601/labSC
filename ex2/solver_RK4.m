@@ -19,13 +19,5 @@ end
 display('The required vector is')
 y
 
-%plot the graph
-figure()
-plot(0:dt:t_end, y,'LineWidth',1.5,'Color',[.6 0 0])
-grid on
-title('Plot of y` vs y')
-ylabel('y`')
-xlabel('y')
-
 end
 
