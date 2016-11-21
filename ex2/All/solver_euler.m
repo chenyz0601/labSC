@@ -3,7 +3,7 @@ function [ y ] = solver_euler( y_0, dt, t_end,a )
 %   This function is used find the solution of a differential equation of 
 %   the form y'=f(y) using the Explicit Euler Method 
 
-y= zeros(1,t_end/dt);%preallocation to prevent copying again and again while increasing size
+y= zeros(1,t_end/dt);%preallocation to prevent copying again and again while increasing size(improves speed)
 
 y(1)= y_0;
 
