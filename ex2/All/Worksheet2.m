@@ -1,10 +1,10 @@
 %The given conditions for the solution of the problem
-y_0=1;
-dt=[1,  0.25,0.5, 0.125];
-t_end= 5;
+y_0=1; % intial value
+dt=[1,  0.25,0.5, 0.125]; %time steps
+t_end= 5; %end time
 
 %These variables are reqired for the calculation of ~E 
-dt= sort(dt,'descend');
+dt= sort(dt,'descend'); %gets smallest time step to the end
 global all_solution_euler;
 global all_solution_heun;
 global all_solution_RK4;
