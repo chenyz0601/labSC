@@ -3,7 +3,7 @@ function [ y] = solver_heun( y_0, dt, t_end, a)
 %   This function is used find the solution of a differential equation of 
 %   the form y'=f(y) using the Method of Heun
 
-y= zeros(1,t_end/dt);%preallocation to prevent copyimng again and agin while increasing size
+y= zeros(1,t_end/dt);%preallocation to prevent copyimng again and agin while increasing size(improves speed)
 y(1)= y_0;
 
 for i=1:(t_end/dt)
