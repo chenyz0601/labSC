@@ -9,7 +9,7 @@ global all_solution_euler;
 global all_solution_heun;
 global all_solution_RK4;
 
-%preallocations to prevent copying again and again while increasing size
+%preallocations to prevent copying again and again while increasing size(improves speed)
 E_euler=zeros(1,size(dt,2));
 E_heun=zeros(1,size(dt,2));
 E_RK4=zeros(1,size(dt,2));
