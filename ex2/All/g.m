@@ -1,9 +1,10 @@
 function [p_t  ] = g(dt, t_end)
 
-%G defination of the solution of the differential equation
 
-%   This function is used to define the solution of the differential equation that needs to
-%   be solved 
+%G defination of the analytical solution of f(x)
+
+%   This function is used to define the analytical solution of the 
+%   differential equation 
 
 p_t= zeros(1,t_end/dt);%preallocation to prevent copying again and again while increasing size(increase speed)
 
