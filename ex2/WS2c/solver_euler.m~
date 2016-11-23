@@ -14,7 +14,8 @@ end
 display('The required vector is')
 y
 
-plot_graph( 1, dt,t_end, y )
+h = plot_graph( 1, dt,t_end, y )
+legend(,'Location','southeast')
 
 end
 
