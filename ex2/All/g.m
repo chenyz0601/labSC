@@ -9,7 +9,7 @@ function [p_t  ] = g(dt, t_end)
 p_t= zeros(1,t_end/dt);%preallocation to prevent copying again and again while increasing size(increase speed)
 
 for i=1:((t_end/dt+1))
-p_t(i) = 10./(1+9*exp(-(i-1)*dt)); % Please define f(y) as y_dy= f(y)
+       p_t(i) = 10./(1+9*exp(-(i-1)*dt)); % Please define f(y) as y_dy= f(y)
 end
 end
 
