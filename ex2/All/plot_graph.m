@@ -27,8 +27,5 @@ grid on
 ylabel('y`')
 xlabel('y')
     
-warning('off','all');
-legend('dt=1','dt=0.5','dt=0.25','dt=0.125','Location','southeast')
-warning;
 end
 

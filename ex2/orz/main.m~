@@ -56,7 +56,7 @@ xlabel('-log(dt)');
 ylabel('log(error)');
 subplot(2,2,3);
 plot(1:1:4,log(e_RK));
-s = (log(e_RK(4))-log(e_RK(1)))/(log(1/8)-log(1));
+s = (log(e_RK(4))-log(e_RK(1)))/;
 title(['Runge Kutta, slope=' num2str(s)]);
 xlabel('-log(dt)');
 ylabel('log(error)');
