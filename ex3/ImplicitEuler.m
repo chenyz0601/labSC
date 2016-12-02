@@ -1,5 +1,5 @@
 function out = ImplicitEuler(y0,dt,tEnd)
-    out = zeros(1+tEnd/dt,1);
+    out = zeros(1,1+tEnd/dt);
     out(1) = y0;
     for i=1:1:tEnd/dt
         yn = out(i);
