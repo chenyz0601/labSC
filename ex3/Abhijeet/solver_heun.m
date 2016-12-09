@@ -1,4 +1,4 @@
-function [ y] = solver_heun( y_0, dt, t_end, a)
+function [ y] = solver_heun( y_0, dt, t_end)
 %SOLVER_HEUN Method of Heun
 %   This function is used find the solution of a differential equation of 
 %   the form y'=f(y) using the Method of Heun
@@ -13,8 +13,8 @@ for i=1:(t_end/dt)
 end
 
 %displays the required vector
-sprintf('The required vector y of Method of Heun for dt = %.5f is',dt)
-disp(y)
+%sprintf('The required vector y of Method of Heun for dt = %.5f is',dt)
+%disp(y)
 
 
 

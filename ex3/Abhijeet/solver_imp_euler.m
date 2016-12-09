@@ -1,4 +1,4 @@
-function [ y ] = solver_imp_euler( y_0, dt, t_end,a )
+function [ y ] = solver_imp_euler( y_0, dt, t_end)
 %SOLVER_IMP_EULER Implicit Euler Method
 %   This function is used find the solution of a differential equation of 
 %   the form y'=f(y) using the implicit Euler Method 
@@ -14,8 +14,8 @@ for i=1:(t_end/dt)
 end
 
 %displays the required vector
-sprintf('The required vector y of Implicit Euler Method for dt = %.5f is',dt)
-disp(y)
+%sprintf('The required vector y of Implicit Euler Method for dt = %.5f is',dt)
+%disp(y)
 
 
 %plot all the curves for this method

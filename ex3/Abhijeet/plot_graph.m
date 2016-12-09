@@ -1,4 +1,4 @@
-function [ output_args ] = plot_graph(p_t, t_end,dt )
+function [  ] = plot_graph(p_t, t_end,dt )
 %PLOT_GRAPH Plots the required graphs
 %   plots the the analytical solution in each graph and also does the
 %   settings for each of the graphs
@@ -62,5 +62,15 @@ grid on
 axis([0,5,0,20])      
 ylabel('y`')
 xlabel('y')
+
+figure(7)%Analytical Solution
+title('Plot of the analytical solution')
+plot(0:dt:t_end,p_t,'LineWidth',1.5,'Color',[0 0 0])
+legend('exact solution','Location','southeast')
+hold on
+grid on
+axis([0,5,0,20])      
+ylabel('p(t)')
+xlabel('t')
 end
 
