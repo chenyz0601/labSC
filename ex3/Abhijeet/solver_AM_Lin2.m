@@ -14,7 +14,7 @@ for i=1:(t_end/dt)
        y(i+1)=newton_AM(y(i),dt,2);
        a=a+1;
     else
-        y(i+1)=newton_AM(y(i),dt,0);
+        y(i+1)=newton_AM(y(i),dt,2);
      end
         
    

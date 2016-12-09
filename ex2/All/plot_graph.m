@@ -20,7 +20,7 @@ if(a==3)
 end
  
 %plot the graph 
-plot(0:dt:t_end, y,'LineWidth',1.5,'Color',[rand() rand() rand()])
+plot(0:dt:t_end, y,'Color',[rand() rand() rand()])
 hold on
 grid on
     

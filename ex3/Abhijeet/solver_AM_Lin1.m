@@ -9,11 +9,11 @@ y= zeros(1,t_end/dt);%preallocation to prevent copying again and again while inc
 y(1)= y_0;
 a=0
 for i=1:(t_end/dt)
-     if ((3.5*dt-1)^2+7*dt*(y(i)+0.5*dt*f(y(i)))/5 )< 0 || a>0
+     if ((3.5*dt-1)^2+7*dt*(y(i)+0.5*dt*f(y(i)))/5 )<= 0 || a>0 || y(i)==0
        y(i+1)=newton_AM(y(i),dt,1);
        a=a+1;
      else
-        y(i+1)=newton_AM(y(i),dt,0);
+        y(i+1)=newton_AM(y(i),dt,1);
      end
         
 end

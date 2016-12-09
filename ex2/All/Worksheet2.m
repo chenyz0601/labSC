@@ -1,8 +1,8 @@
 %The given conditions for the solution of the problem
 
 y_0=1; % intial value
-dt=[1,  0.25,0.5, 0.125]; %time steps
-t_end= 5; %end time
+dt=[1,  0.25,0.5, 0.0183]; %time steps
+t_end= 183; %end time
 
 %These variables are reqired for the calculation of ~E 
 dt= sort(dt,'descend'); %gets smallest time step to the end
@@ -34,9 +34,9 @@ end
 %this for loop finds the error w.r.t to last element of dt as it is smallest
 %due to sort.
 for i=1:size(dt,2)
-    E_euler_new(i) = sqrt((dt(i)/t_end)*sum((all_solution_euler(i,1:(t_end/dt(i)))-all_solution_euler(size(dt,2), 1 : dt(i)/dt(size(dt,2)):(t_end/dt(size(dt,2))))).^2));
-    E_heun_new(i) = sqrt((dt(i)/t_end)*sum((all_solution_heun(i,1:(t_end/dt(i)))-all_solution_heun(size(dt,2), 1 : dt(i)/dt(size(dt,2)):(t_end/dt(size(dt,2))))).^2));
-    E_RK4_new(i) = sqrt((dt(i)/t_end)*sum((all_solution_RK4(i,1:(t_end/dt(i)))-all_solution_RK4(size(dt,2), 1 : dt(i)/dt(size(dt,2)):(t_end/dt(size(dt,2))))).^2));
+    E_euler_new(i) = sqrt((dt(i)/t_end)*sum((all_solution_euler(i,1:(t_end/dt(i))+1)-all_solution_euler(size(dt,2), 1 : dt(i)/dt(size(dt,2)):(t_end/dt(size(dt,2)))+1)).^2));
+    E_heun_new(i) = sqrt((dt(i)/t_end)*sum((all_solution_heun(i,1:(t_end/dt(i))+1)-all_solution_heun(size(dt,2), 1 : dt(i)/dt(size(dt,2)):(t_end/dt(size(dt,2)))+1)).^2));
+    E_RK4_new(i) = sqrt((dt(i)/t_end)*sum((all_solution_RK4(i,1:(t_end/dt(i))+1)-all_solution_RK4(size(dt,2), 1 : dt(i)/dt(size(dt,2)):(t_end/dt(size(dt,2)))+1)).^2));
 end
 plot_ana_solution( pk_exact, dt(size(dt,2)), t_end)
 %These lines find the reduction in error with refinement of dt as dt is in
