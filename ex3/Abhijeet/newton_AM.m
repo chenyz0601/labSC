@@ -31,7 +31,7 @@ count=0;
      
      %steps to perform if unsolvable
    
-     if (eror >100 || count> 100) && a==0 % unsolavable and no linearisation is applied
+     if (eror >100 || count> 100000) && a==0 % unsolavable and no linearisation is applied
               iter1=69;
               break;
      end

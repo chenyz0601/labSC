@@ -10,11 +10,13 @@ hold on;
 y0 = 20;
 tEnd = 5;
 figure(2);
+pre_error = 0;
 for i=0:5
     dt = 0.5^i;
     t = 0:dt:tEnd;
     error = sqrt(dt*0.2)*norm(p_t(t)-Euler(y0,dt,tEnd));
-    fprintf('Explicit Euler with dt=%f ,error is %f.\n',dt,error);
+    fprintf('Explicit Euler with dt=%f, error is %f, reduction is %f.\n',dt,error,pre_error/error);
+    pre_error = error;
     plot(t,Euler(y0,dt,tEnd));    
     hold on;
 end
@@ -27,7 +29,8 @@ for i=0:5
     dt = 0.5^i;
     t = 0:dt:tEnd;
     error = sqrt(dt*0.2)*norm(p_t(t)-Heun(y0,dt,tEnd));
-    fprintf('Explicit Heun with dt=%f ,error is %f.\n',dt,error);
+    fprintf('Explicit Heun with dt=%f, error is %f, recution is %f.\n',dt,error,pre_error/error);
+    pre_error = error;
     plot(t,Heun(y0,dt,tEnd));
     hold on;
 end
@@ -42,7 +45,8 @@ for i=0:5
     dt = 0.5^i;
     t = 0:dt:tEnd;
     error = sqrt(dt*0.2)*norm(p_t(t)-ImplicitEuler(y0,dt,tEnd));
-    fprintf('Implicit Euler with dt=%f ,error is %f.\n',dt,error);
+    fprintf('Implicit Euler with dt=%f, error is %f, reduction is %f.\n',dt,error,pre_error/error);
+    pre_error = error;
     plot(t,ImplicitEuler(y0,dt,tEnd));    
     hold on;
 end
@@ -57,7 +61,8 @@ for i=0:5
     dt = 0.5^i;
     t = 0:dt:tEnd;
     error = sqrt(dt*0.2)*norm(p_t(t)-AM2nd(y0,dt,tEnd));
-    fprintf('Implicit Adam-Moulton with dt=%f ,error is %f.\n',dt,error);
+    fprintf('Implicit Adam-Moulton with dt=%f, error is %f, reduction is %f.\n',dt,error,pre_error/error);
+    pre_error = error;
     plot(t,AM2nd(y0,dt,tEnd));
     hold on;
 end
@@ -72,7 +77,8 @@ for i=0:5
     dt = 0.5^i;
     t = 0:dt:tEnd;
     error = sqrt(dt*0.2)*norm(p_t(t)-AM2ndLinear1(y0,dt,tEnd));
-    fprintf('Implicit Adam-Moulton with linearization 1 with dt=%f ,error is %f.\n',dt,error);
+    fprintf('Implicit Adam-Moulton with linearization 1 with dt=%f, error is %f, reduction is %f.\n',dt,error,pre_error/error);
+    pre_error = error;
     plot(t,AM2ndLinear1(y0,dt,tEnd));
     hold on;
 end
@@ -87,7 +93,8 @@ for i=0:5
     dt = 0.5^i;
     t = 0:dt:tEnd;
     error = sqrt(dt*0.2)*norm(p_t(t)-AM2ndLinear2(y0,dt,tEnd));
-    fprintf('Implicit Adam-Moulton with linearization 2 with dt=%f ,error is %f.\n',dt,error);
+    fprintf('Implicit Adam-Moulton with linearization 2 with dt=%f, error is %f, reduction is %f.\n',dt,error,pre_error/error);
+    pre_error = error;
     plot(t,AM2ndLinear2(y0,dt,tEnd));
     hold on;
 end
