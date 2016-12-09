@@ -1,7 +1,9 @@
 function plot_graph( a, dt,t_end, y )
 %PLOT This function plots all the results obtained by the solvers
 
-%plot the graph
+%The variable 'a' acts as an identifier for for where is the call
+% made and plot in the respective figure
+
 if (a==1)
     figure(1)
     title('Plot of y` vs y (Explicit Euler Method)')
@@ -16,15 +18,17 @@ if(a==3)
     figure(3)
     title('Plot of y` vs y (The Runge-Kutta Method)')
 end
-    plot(0:dt:t_end, y,'LineWidth',1.5,'Color',[rand() rand() rand()])
-    hold on
-    grid on
+ 
+%plot the graph 
+plot(0:dt:t_end, y,'LineWidth',1.5,'Color',[rand() rand() rand()])
+hold on
+grid on
     
-    ylabel('y`')
-    xlabel('y')
+ylabel('y`')
+xlabel('y')
     
-    warning('off','all');
-    legend('dt=1','dt=0.5','dt=0.25','dt=0.125','Location','southeast')
-    warning;
+warning('off','all');
+legend('dt=1','dt=0.5','dt=0.25','dt=0.125','Location','southeast')
+warning;
 end
 

@@ -1,15 +1,16 @@
 %The given conditions for the solution of the problem
-y_0=1;
-dt=[1,  0.25,0.5, 0.125];
-t_end= 5;
+tic
+y_0=1; % intial value
+dt=[1,  0.25,0.5, 0.125]; %time steps
+t_end= 5; %end time
 
 %These variables are reqired for the calculation of ~E 
-dt= sort(dt,'descend');
+dt= sort(dt,'descend'); %gets smallest time step to the end
 global all_solution_euler;
 global all_solution_heun;
 global all_solution_RK4;
 
-%preallocations to prevent copying again and again while increasing size
+%preallocations to prevent copying again and again while increasing size(improves speed)
 E_euler=zeros(1,size(dt,2));
 E_heun=zeros(1,size(dt,2));
 E_RK4=zeros(1,size(dt,2));
@@ -44,16 +45,15 @@ end
 err_factor_reduction_euler(2:size(dt,2))=E_euler(2:size(dt,2))./E_euler(1:size(dt,2)-1);
 err_factor_reduction_heun(2:size(dt,2))=E_heun(2:size(dt,2))./E_heun(1:size(dt,2)-1);
 err_factor_reduction_RK4(2:size(dt,2))=E_RK4(2:size(dt,2))./E_RK4(1:size(dt,2)-1);
-    
+ toc;   
 %Dispaly the home work table
 disp('          EXPLICIT EULER METHOD (q=1)')
-T1=table(dt', E_euler', err_factor_reduction_euler',E_euler_new','VariableNames',{'dt' 'error' 'error_red' 'error_app'});
-disp(T1)
+disp(table(dt', E_euler', err_factor_reduction_euler',E_euler_new','VariableNames',{'dt' 'error' 'error_red' 'error_app'}))
 
 disp('              METHOD OF HEUN (q=2)')
-T2=table(dt', E_heun', err_factor_reduction_heun',E_heun_new','VariableNames',{'dt' 'error' 'error_red' 'error_app'});
-disp(T2)
+disp(table(dt', E_heun', err_factor_reduction_heun',E_heun_new','VariableNames',{'dt' 'error' 'error_red' 'error_app'}))
 
 disp('           RUNGE-KUTTA METHOD (q=4)')
-T3=table(dt', E_RK4', err_factor_reduction_RK4',E_RK4_new','VariableNames',{'dt' 'error' 'error_red' 'error_app'});
-disp(T3)
+disp(table(dt', E_RK4', err_factor_reduction_RK4',E_RK4_new','VariableNames',{'dt' 'error' 'error_red' 'error_app'}))
+
+clearvars;
