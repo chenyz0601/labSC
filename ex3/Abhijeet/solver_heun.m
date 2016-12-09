@@ -13,16 +13,15 @@ for i=1:(t_end/dt)
 end
 
 %displays the required vector
-sprintf('The required vector y of Method of Heun for dt = %.3f is',dt)
-y
+sprintf('The required vector y of Method of Heun for dt = %.5f is',dt)
+disp(y)
 
-%This variable stores all calculations for all time steps used to calculate
-%errors
-global all_solution_heun;
-all_solution_heun(a,1:(t_end/dt)+1)=y(1:(t_end/dt)+1);
+
 
 %plot all the curves for this method
-plot_graph( 2, dt,t_end, y )
+figure(2)
+plot(0:dt:t_end, y,'LineWidth',1.5,'Color',[rand() rand() rand()])
+hold on
 
 end
 

@@ -13,16 +13,13 @@ for i=1:(t_end/dt)
 end
 
 %displays the required vector
-sprintf('The required vector y of Euler Method for dt = %.3f is',dt)
-y
-
-%This variable stores all calculations for all time steps used to calculate
-%errors
-global all_solution_euler;
-all_solution_euler(a,1:(t_end/dt)+1)=y(1:(t_end/dt)+1);
+sprintf('The required vector y of Euler Method for dt = %.5f is',dt)
+disp(y)
 
 %plot all the curves for this method
-plot_graph( 1, dt,t_end, y )
+figure(1)
+plot(0:dt:t_end, y,'LineWidth',1.5,'Color',[rand() rand() rand()])
+hold on
 
 end
 
