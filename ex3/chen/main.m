@@ -38,8 +38,6 @@ title('Heun');
 axis([0,5,0,20]);
 legend('dt=1','dt=1/2','dt=1/4','dt=1/8','dt=1/16','dt=1/32','Location','southeast');
 %% c & d
-y0 = 20;
-tEnd = 5;
 figure(4);
 for i=0:5
     dt = 0.5^i;
