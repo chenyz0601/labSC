@@ -9,6 +9,16 @@ count=0;
 
 
  while (abs(eror)> 10^-4)
+     if  a==1 % lin1 is applied
+              iter1= (y_n+0.5*dt*f(y_n)+3.5*dt*y_n)/(1+0.35*y_n*dt);
+              break;
+     end
+     
+     if a==2 % lin2 is applied
+              iter1= (y_n+0.5*dt*f(y_n))/(1-3.5*dt*(1-y_n/10));
+              break;
+     end
+     
      count=count+1;
      
      %x_n+1=x_n - G(X)/G'(X)
@@ -20,14 +30,7 @@ count=0;
      iter1=iter2;
      
      %steps to perform if unsolvable
-     if (eror >100 || count> 100) && a==1 % unsolavable and lin1 is applied
-              iter1= (y_n+0.5*dt*f(y_n)+3.5*dt*y_n)/(1+0.35*y_n*dt);
-              break;
-     end
-     if (eror >100 || count> 100) && a==2 % unsolavable and lin2 is applied
-              iter1= (y_n+0.5*dt*f(y_n))/(1-3.5*dt*(1-y_n/10));
-              break;
-     end
+   
      if (eror >100 || count> 100) && a==0 % unsolavable and no linearisation is applied
               iter1=69;
               break;
