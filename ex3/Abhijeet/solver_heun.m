@@ -12,6 +12,7 @@ for i=1:(t_end/dt)
     y(i+1)=y(i)+dt*0.5*(f(y(i))+f(y(i+1)));
     
      if y(i+1) <10
+         a=a+1;
        end
 end
 
