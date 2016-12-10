@@ -7,16 +7,24 @@ function [ y] = solver_AM_Lin2( y_0, dt, t_end)
 y= zeros(1,t_end/dt);%preallocation to prevent copying again and again while increasing size(improves speed)
 
 y(1)= y_0;
+a=0;
 for i=1:(t_end/dt)
   
        y(i+1)=newton_AM(y(i),dt,2);
-         
+       
+       if y(i+1) <10
+          a=a+1;
+       end
    
 end
 
 %displays the required vector
 %sprintf('The required vector y of Adams Moulton Method with Lin2 for dt = %.5f is',dt)
 %disp(y)
+
+if a>0
+    disp(sprintf('dt= %f unstable for Adams Moulton Linearisation 2\n ',dt))
+end
 
 %plot all the curves for this method
 figure(6)

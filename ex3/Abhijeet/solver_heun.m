@@ -5,17 +5,23 @@ function [ y] = solver_heun( y_0, dt, t_end)
 
 y= zeros(1,t_end/dt);%preallocation to prevent copyimng again and agin while increasing size(improves speed)
 y(1)= y_0;
-
+a=0;
 for i=1:(t_end/dt)
     %Defination of Method of Heun
     y(i+1)=y(i)+dt*f(y(i));
     y(i+1)=y(i)+dt*0.5*(f(y(i))+f(y(i+1)));
+    
+     if y(i+1) <10
+       end
 end
 
 %displays the required vector
 %sprintf('The required vector y of Method of Heun for dt = %.5f is',dt)
 %disp(y)
 
+if a>0
+    disp(sprintf('dt= %f unstable for Method of Heun \n ',dt))
+end
 
 
 %plot all the curves for this method

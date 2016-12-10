@@ -1,5 +1,6 @@
 %The given conditions for the solution of the problem
-
+clc;
+clear all;
 
 y_0=20; % intial value
 t_end= 5; %end time
