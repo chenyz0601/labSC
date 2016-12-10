@@ -1,5 +1,5 @@
 function [ iter1] = newton_imp_euler( y_n,dt )
-%NEWTON Newtons Method 
+%NEWTON_IMP_EULER Newtons Method 
 %   This function handles the newton method step for Implicit Euler Method
 
 

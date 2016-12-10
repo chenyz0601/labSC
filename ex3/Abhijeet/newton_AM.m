@@ -4,7 +4,7 @@ function [ iter1 ] = newton_AM( y_n,dt,a )
 %   w/ or w/o the linearisation
 
 eror=1;
-iter1=0;
+iter1=y_n/2;
 count=0;
 
 
@@ -22,8 +22,8 @@ count=0;
      count=count+1;
      
      %x_n+1=x_n - G(X)/G'(X)
-     iter2= iter1-(iter1-y_n-dt*0.5*(f(y_n)+f(iter1)))/(1-dt*0.5*(f(y_n+eps)-f(y_n)-f(iter1)+f(iter1+eps))/eps);
-     
+     iter2= iter1-(iter1-y_n-dt*0.5*(f(y_n)+f(iter1)))/(1-dt*0.5*(f(y_n+eps)-f(y_n-eps)-f(iter1-eps)+f(iter1+eps))/(2*eps));
+    
      %eror to check how close to 0 is G(X)
      eror = iter2-y_n-dt*0.5*(f(iter2)+f(y_n));
      
@@ -31,7 +31,7 @@ count=0;
      
      %steps to perform if unsolvable
    
-     if (eror >100 || count> 100000) && a==0 % unsolavable and no linearisation is applied
+     if (eror >1000 || count> 100000) && a==0 % unsolavable and no linearisation is applied
               iter1=69;
               break;
      end

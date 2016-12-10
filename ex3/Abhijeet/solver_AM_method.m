@@ -11,8 +11,8 @@ for i=1:(t_end/dt)
    
     y(i+1)=newton_AM(y(i),dt,0);
    if y(i+1)==69
-       y(i+1)=0;
-       sprintf('dt= %f unstable for Adams Moulton ',dt)
+       y(i+1)=Inf;
+       disp(sprintf('dt= %f unstable for Adams Moulton \n ',dt))
         break;
     end
 end

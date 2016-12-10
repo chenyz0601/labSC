@@ -1,5 +1,6 @@
 %The given conditions for the solution of the problem
 
+
 y_0=20; % intial value
 t_end= 5; %end time
 deltaT=[1/2, 1/4, 1/8, 1/16, 1/32];
@@ -42,23 +43,23 @@ end
  err_red_Lin2(2:5)=E_AM_Lin2(1:4)./E_AM_Lin2(2:5);
  
  %Dispaly the home work table
-disp('          EXPLICIT EULER METHOD (q=1)')
+disp('       EXPLICIT EULER METHOD (q=1)')
 disp(table(deltaT', E_euler', err_red_euler','VariableNames',{'dt' 'error' 'error_red'}))
 
-disp('              METHOD OF HEUN (q=2)')
+disp('         METHOD OF HEUN (q=2)')
 disp(table(deltaT', E_heun', err_red_heun','VariableNames',{'dt' 'error' 'error_red'}))
 
-disp('          IMPLICIT EULER METHOD (q=1)')
+disp('       IMPLICIT EULER METHOD (q=1)')
 disp(table(deltaT', E_imp_euler', err_red_imp','VariableNames',{'dt' 'error' 'error_red'}))
 
 
-disp('          ADAMS MOULTON METHOD (q=2)')
+disp('       ADAMS MOULTON METHOD (q=2)')
 disp(table(deltaT', E_AM', err_red_AM','VariableNames',{'dt' 'error' 'error_red'}))
 
-disp('          ADAMS MOULTON METHOD- Lin 1 (q=2)')
+disp('    ADAMS MOULTON METHOD- Lin 1 (q=2)')
 disp(table(deltaT', E_AM_Lin1', err_red_Lin1','VariableNames',{'dt' 'error' 'error_red'}))
 
-disp('          ADAMS MOULTON METHOD- Lin 2 (q=2)')
+disp('    ADAMS MOULTON METHOD- Lin 2 (q=2)')
 disp(table(deltaT', E_AM_Lin2', err_red_Lin2','VariableNames',{'dt' 'error' 'error_red'}))
 
 toc  
