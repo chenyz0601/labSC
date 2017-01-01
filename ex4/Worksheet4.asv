@@ -1,7 +1,7 @@
 clc;
 clear
-global var;
-var=1;
+global var
+=0;
 % Boundary of the PDE 
 x_l=0;
 x_r= 1;
