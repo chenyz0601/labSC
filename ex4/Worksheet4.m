@@ -12,26 +12,31 @@ Nx = 7; % J: number of division for x
 Ny = 7;
 
 dx = (x_r-x_l) / (Nx+1);
-dy = (y_u-y_d) / (Ny+1);
+dy = dx;
 
 %generate grid points
 x=x_l:dx:x_r;
 y=y_d:dy:y_u;
-T=zeros(Nx,Ny);
-U=T
-for j=1:Ny
-    for i=1:Nx
-        if(i=j)
-            U(i,j)=4;
-        else if(i-1=j)
-            U(i,j)=1; 
-        else if(i-1=j)
-        T(i,j)= dx^2*-2*pi*pi*sin(pi*i*(Nx+1)^-1)*sin(pi*j*(Nx+1)^-1);
-    end
-end
 
-b= = tridiag(1, −4, 1)
+[U,T]=discreditisation(Nx,Ny,dx);
 
+%MATLAB direct solver
+tic 
+ans1=sol_direct(U,T,Nx) 
+toc
 figure(1)
+surf(y,x,ans1); % 3-D surface plot
 
-%surf(y,x,u); % 3-D surface plot
+%MATLAB direct solver sparse
+tic 
+ans2=sol_direct(sparse(U),T,Nx)
+toc
+figure(2)
+surf(y,x,ans2); % 3-D surface plot
+
+%Gauss Siedel solver 
+%tic 
+%ans3=sol_gauss_siedel(U,T,Nx)
+%toc
+%figure(2)
+%surf(y,x,ans2); % 3-D surface plot
