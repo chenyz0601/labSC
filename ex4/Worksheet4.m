@@ -9,15 +9,17 @@ x_r= 1;
 y_d=0;
 y_u= 1;
 
-Nx = 7; % J: number of division for x
-Ny = 7;
+N =[7,15,31,63]; % J: number of division for x
+for i=1:size(N,2)
+Nx=N(i);
+Ny = Nx;
 
 dx = (x_r-x_l) / (Nx+1);
 dy = dx;
 
 %generate grid points
 x=x_l:dx:x_r;
-y=y_d:dy:y_u;
+y=x;
 
 [U,T]=discreditisation(Nx,Ny,dx);
 
@@ -36,3 +38,5 @@ sol_direct(sparse(U),T,Nx,2,x,y);
 %toc
 %figure(2)
 %surf(y,x,ans2); % 3-D surface plot
+
+end

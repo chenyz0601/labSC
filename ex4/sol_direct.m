@@ -13,17 +13,19 @@ if a==1
 disp(sprintf('Total of entries involved =%.0f',size(U,1)*size(U,2)+size(T,2)))
 figure(var)
 surf(y,x,ans1); % 3-D surface plot
+str=sprintf('Surface Plot(Full Matrix)-N=%.0f', Nx);
+title(str)
 var=var+1;
 
 else if a==2
 disp(sprintf('Total of entries involved =%.0f',Nx*(Nx+2*(Nx-1))+Nx*Nx*2+size(T,2)))
 figure(var)
 surf(y,x,ans1); % 3-D surface plot
+str=sprintf('Surface Plot(Sparse Matrix)-N=%.0f', Nx);
+title(str)
 var=var+1;
     end
     
-figure(a)
-surf(y,x,ans1); % 3-D surface plot
 
 
 end
