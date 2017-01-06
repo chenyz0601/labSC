@@ -9,7 +9,7 @@ x_r= 1;
 y_d=0;
 y_u= 1;
 
-N =[7,15,31,63]; % J: number of division for x
+N =[7]; % J: number of division for x
 for i=1:size(N,2)
 Nx=N(i);
 Ny = Nx;
@@ -33,10 +33,10 @@ sol_direct(sparse(U),T,Nx,2,x,y);
 
 
 %Gauss Siedel solver 
-%tic 
-%ans3=sol_gauss_siedel(U,T,Nx)
-%toc
-%figure(2)
-%surf(y,x,ans2); % 3-D surface plot
+disp(sprintf('\nMATLAB Sparse Matrix Solver Nx=%.0f',Nx))
+sol_gauss_siedel(U,T,Nx,x,y);
+
+
+
 
 end
