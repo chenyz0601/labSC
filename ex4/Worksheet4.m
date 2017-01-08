@@ -1,42 +1,51 @@
-clc;
+%% Worksheet 4, Scientific Computing Lab
 clear
-global var;
-var=1;
-% Boundary of the PDE 
-x_l=0;
-x_r= 1;
+close all
+format short
+clc
+%% Part b
+%{
+nX = 63;
+nY = 63;
+[~, sparseA, c] = DiscretizePDE(nX, nY, 1);
+A = full(sparseA);
+%}
+%% Part c
+%{
+nX = 63;
+nY = nX;
+T = GaussSeidel(nX(i), nY(i));
+%}
+%% Part d, e, and f
+%
+nX = [63];
+nY = nX;
+nNodeIdentifier = {'SixtyThree'}; %'OneTwentySeven'};
+MethodIdentifier = {'DirectSolverFullMatrix', 'DirectSolverSparseMatrix', 'GaussSeidel'};
+for i = 1:size(nX,2)
+%
+tic
+DirectSolverFullMatrix.(nNodeIdentifier{i}).NodalValue = DiscretizePDE(nX(i), nY(i), 1);
+DirectSolverFullMatrix.(nNodeIdentifier{i}).tComputation = toc;
+Plot(nX(i), nY(i), MethodIdentifier{1}, DirectSolverFullMatrix.(nNodeIdentifier{i}).NodalValue)
 
-y_d=0;
-y_u= 1;
-
-N =[7]; % J: number of division for x
-for i=1:size(N,2)
-Nx=N(i);
-Ny = Nx;
-
-dx = (x_r-x_l) / (Nx+1);
-dy = dx;
-
-%generate grid points
-x=x_l:dx:x_r;
-y=x;
-
-[U,T]=discreditisation(Nx,Ny,dx);
-
-%MATLAB direct solver
-disp(sprintf('\nMATLAB Full Matrix Solver Nx=%.0f',Nx))
-sol_direct(U,T,Nx,1,x,y);
-
-%MATLAB direct solver sparse
-disp(sprintf('\nMATLAB Sparse Matrix Solver Nx=%.0f',Nx))
-sol_direct(sparse(U),T,Nx,2,x,y);
-
-
-%Gauss Siedel solver 
-disp(sprintf('\nMATLAB Sparse Matrix Solver Nx=%.0f',Nx))
-sol_gauss_siedel(U,T,Nx,x,y);
-
-
-
-
+tic
+DirectSolverSparseMatrix.(nNodeIdentifier{i}).NodalValue = DiscretizePDE(nX(i), nY(i), 2);
+DirectSolverSparseMatrix.(nNodeIdentifier{i}).tComputation = toc;
+Plot(nX(i), nY(i), MethodIdentifier{2}, DirectSolverSparseMatrix.(nNodeIdentifier{i}).NodalValue)
+%}
+tic
+GaussSeidl.(nNodeIdentifier{i}).NodalValue = GaussSeidel(nX(i), nY(i));
+GaussSeidl.(nNodeIdentifier{i}).tComputation = toc;
+Plot(nX(i), nY(i), MethodIdentifier{3}, GaussSeidl.(nNodeIdentifier{i}).NodalValue)
 end
+%}
+%% Part e
+%
+%}
+%% Part f
+%
+%}
+%% Part g
+%
+%}
