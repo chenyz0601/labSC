@@ -3,6 +3,8 @@ function [ U,T ] = discreditisation(Nx,Ny,dx)
 %   Detailed explanation goes here
 a=1;
 b=1;
+U=zeros(Ny*Ny,Ny*Ny);
+T=zeros(1,Ny*Ny);
 for i=1:Ny*Ny
     
     U(i,i)=-4;
