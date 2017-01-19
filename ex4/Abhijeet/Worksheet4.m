@@ -41,7 +41,7 @@ end
 
 %Gauss Siedel solver 
 fprintf('\nMATLAB Gauss Seidel Matrix Solver Nx=%.0f\n',Nx)
-ans1=sol_gauss_siedel(U,T,Nx,x,y);
+ans1=sol_gauss_siedel(sparse(U),T,Nx,x,y);
 
 %analytical solution
 analytical=zeros(Nx+2,Nx+2);
