@@ -30,7 +30,7 @@ for i=1:(0.5/dt)
    
     
      if i== (0.5/dt) ||i== (0.375/dt) || i== (.25/dt)|| i== (0.125/dt)  
-         plotter(ans1,Nx, dt, i,str1);   
+         plotter(T,Nx, dt, i,str1,4);   
      end
 end
 
