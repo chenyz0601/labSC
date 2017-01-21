@@ -2,7 +2,7 @@
 clc;
 clear all;
 
-y_0=20; % intial value
+y_0=19.9; % intial value
 t_end= 5; %end time
 deltaT=[1/2, 1/4, 1/8, 1/16, 1/32];
 tic
