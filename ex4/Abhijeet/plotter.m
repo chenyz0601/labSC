@@ -29,6 +29,7 @@ xlabel('length along x')
 
 figure(var)
 surf(y,x,ans1);
+colorbar;
 var=var+1;
 title(str)
 axis([0,1,0,1,0,1.2 ])      
