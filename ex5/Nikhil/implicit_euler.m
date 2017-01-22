@@ -40,7 +40,7 @@ Told=Tnew;
 
 if s== (0.5/dt) ||s== (0.375/dt) || s== (.25/dt)|| s== (0.125/dt)  
     
-    str1=sprintf('Implicit Euler Nx=%0.f for dt=%f', Nx,dt);     
+    str1=sprintf('ImplicitEulerNx_%0.f_dt_%f_T_%.3f.png', Nx,dt,s*dt);     
     plotter(Told,Nx, dt, s,str1,4);   
 end
 

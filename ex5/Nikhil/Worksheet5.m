@@ -49,5 +49,4 @@ implicit_euler(T,dt_all(1),Nx,dx);
 
 end
 
-%Save the plots
-SaveImage
+

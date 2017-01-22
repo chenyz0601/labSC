@@ -23,7 +23,7 @@ for i=1:(0.5/dt)
    Told=Tnew;
    
     if i== (0.5/dt) ||i== (0.375/dt) || i== (.25/dt)|| i== (0.125/dt) 
-        str1=sprintf('Explicit Euler t=%f',i*dt);
+        str1=sprintf('ExplicitEulerNx_%0.f_dt_%f_T_%.3f.png', Nx,dt,i*dt);
         plotter(Told,Nx, dt, i,str1,0);   
     end
 end
