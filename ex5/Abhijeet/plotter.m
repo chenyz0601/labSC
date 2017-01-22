@@ -9,7 +9,9 @@ y=x;
 
 str=sprintf('Nx=%.0f dt=%f',Nx,dt);
 var=k*8*dt+a;
+
 figure(var)
+set(gcf, 'Position', get(0, 'Screensize'));
 if a == 0
     subplot(4, 7, j )
 end
