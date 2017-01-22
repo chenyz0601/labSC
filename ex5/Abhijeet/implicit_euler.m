@@ -1,47 +1,49 @@
 
 function [] = implicit_euler(T,dt,Nx,dx)
-%IMPLICIT_EULER Summary of this function goes here
-%   Detailed explanation goes here
+%IMPLICIT_EULER Implicit Euler Formulation
+%   This function is used to solve the finite diffrenece discredisied
+%   matrix using an implicit euler formulation
 
-str1=sprintf('Implicit Euler Nx=%0.f for dt=%f', Nx,dt);
-%padding with zeros;
-prev=T;
+a = (Nx+1)*(Nx+1);
+c = 1/(1 + 4*dt*a);
+a=a*c;
 
-residual=1;
+Told=T;
+%Boundary and Initial Condition
 
-A=dt/(dx*dx);
-B=1/(1+4*A);
-C=A*B;
-
-for i=1:(0.5/dt)
+for s=1:0.5/dt
+    Tnew = zeros(Nx+2,Nx+2);
+    limit = 1;
     
-    while residual > 1e-6
-        for x=2:Nx+1
-            for y=2:Nx+1
-            
-            T(x,y)= B*prev(x,y)+C*(T(x-1,y)+T(x+1,y)+T(x,y+1)+T(x,y-1));
-            end
+while(limit > 1e-6)
+    Res = 0;
+    
+    for j=2:Nx+1
+        for i=2:Nx +1
+            %Gauss Siedel in Implicit Euler
+            Tnew(i,j) =c*Told(i,j)+ dt*a*( Tnew(i-1,j) + Tnew(i+1,j)  + Tnew(i,j-1) + Tnew(i,j+1));
         end
-         prev=T;
-           
-        residual= max(max(abs(T-prev)));
-        
     end
-   
     
-     if i== (0.5/dt) ||i== (0.375/dt) || i== (.25/dt)|| i== (0.125/dt)  
-         plotter(T,Nx, dt, i,str1,4);   
-     end
+    for j=2:Nx+1
+        for i=2:Nx +1
+            %Calculating Residual error
+            k =  c*Told(i,j)+ dt*a*(Tnew(i-1,j) + Tnew(i+1,j)  + Tnew(i,j-1) + Tnew(i,j+1))- Tnew(i,j);
+            Res = Res + k^2;
+        end
+    end
+    
+    limit = (1/(Nx*Nx)*Res)^0.5;
+end
+
+Told=Tnew;
+
+if s== (0.5/dt) ||s== (0.375/dt) || s== (.25/dt)|| s== (0.125/dt)  
+    
+    str1=sprintf('Implicit Euler Nx=%0.f for dt=%f', Nx,dt);     
+    plotter(Told,Nx, dt, s,str1,4);   
 end
 
 end
- 
-        
-        
-        
-        
-        
-        
-        
-        
+end
         

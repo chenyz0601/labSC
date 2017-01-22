@@ -51,7 +51,8 @@ for i = 1:4
             u = zeros(N+2,N+2);
             u(2:N+1,2:N+1) = reshape(u_new,N,N);
             t = t+dt;
-         end
+        end
+        
          xx = linspace(0,1,N+2);
          yy = xx;
          subplot(2,2,ni);

@@ -18,12 +18,21 @@ end
 if a==4
         subplot(2, 2, j )
 end
-surf(y,x,ans1);
+surf(y,x,ans1)
+
 title(str)
 ylabel('y')
 xlabel('x')
 zlabel('T')
-%suptitle(str1)
+
+figure(100)
+fig=surf(y,x,ans1);
+title(str)
+ylabel('y')
+xlabel('x')
+zlabel('T')
+saveas(fig,str1);
+close(100)
 
 
 if var ==4 || var== 8
