@@ -1,0 +1,44 @@
+clear all;
+T0 = 1/8;
+
+
+%% explicit euler step
+for i = 1:4
+    T = T0*i;
+    str=sprintf('t=%.3f',T);
+    figure(i);
+    title(str);
+    for ni = 1:4
+        N = 2^(ni+1)-1;
+        dx = 1/(N+1);   
+        dt = 1/64;
+        for ti = 1:7
+            t = 0;
+            u = zeros(N+2,N+2);
+            u(2:N+1,2:N+1)=1;
+            while(t<=T)
+                u_new = dt*(u(1:N,2:N+1)+u(3:N+2,2:N+1)+u(2:N+1,1:N)+u(2:N+1,3:N+2)-4*u(2:N+1,2:N+1))/(dx*dx)+u(2:N+1,2:N+1);
+                u = zeros(N+2,N+2);
+                u(2:N+1,2:N+1) = u_new;
+                t = t+dt;
+            end
+            xx = linspace(0,1,N+2);
+            yy = xx;
+            subplot(4,7,7*(ni-1)+ti);
+            surf(xx,yy,u); 
+            dt = dt/2;
+        end   
+    end
+end
+
+%% implicit euler step
+for i = 1:4
+    T = T0*i;
+    figure(i+4);
+    for ni = 1:4
+        N = 2^(ni+1)-1;
+        dx = 1/(N+1);
+    end
+end
+
+ 
