@@ -45,7 +45,9 @@ dx = (x_r-x_l) / (Nx+1);
 
 T= zeros(Nx+2,Nx+2);
 T(2:Nx+1,2:Nx+1)=1;
- 
-implicit_euler(T,dt_all(1),Nx,dx);
+
+
+implicit_new(T,dt_all(1),Nx,dx);
+
 end
 toc

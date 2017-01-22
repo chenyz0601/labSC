@@ -1,4 +1,0 @@
-function out = ImplicitEuler(u,dt,dx)
-    lamb = dt/(dx*dx);
-    
-end
