@@ -32,6 +32,7 @@ ylabel('y')
 xlabel('x')
 zlabel('T')
 saveas(fig,str1);
+close(100)
 
 
 if var ==4 || var== 8
