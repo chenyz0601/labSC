@@ -47,5 +47,7 @@ T= zeros(Nx+2,Nx+2);
 T(2:Nx+1,2:Nx+1)=1;
  
 implicit_euler(T,dt_all(1),Nx,dx);
+
 end
 toc
+SaveImage
