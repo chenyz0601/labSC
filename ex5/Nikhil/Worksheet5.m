@@ -15,6 +15,7 @@ j=1;
 N =[3,7,15,31]; % number of division for x
 dt_all=[1/64, 1/128, 1/256, 1/512, 1/1024, 1/2048, 1/4096];
 tic
+fprintf('Von Nuemann Stability Analysis\n\n')
 for i=1:size(N,2)
 Nx=N(i);
 Ny = Nx;

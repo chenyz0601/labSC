@@ -3,6 +3,12 @@ function [] = explicit_euler(T,dt,Nx,dx)
 %EXPLICIT_EULER Summary of this function goes here
 %   Detailed explanation goes here
 
+%Von_Neumann Stability Analysis
+
+if (dt > 0.5*dx*dx)
+    fprintf('Explicit Euler unstable for Nx=%.0f and dt=%f\n',Nx,dt)
+end
+
 A=dt/(dx*dx);
 Tnew=T;
 Told=T;
